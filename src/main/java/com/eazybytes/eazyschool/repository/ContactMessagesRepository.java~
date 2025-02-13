@@ -1,0 +1,11 @@
+package com.eazybytes.eazyschool.repository;
+
+
+import org.springframework.stereotype.Repository;
+import com.eazybytes.eazyschool.model.ContactMessage;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+@Repository
+public class public ContactMessagesRepository extends JpaRepository<ContactMessage, Long> {
+}

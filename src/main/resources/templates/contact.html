@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Us - Eazy School</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style-starter.css">
+
+    <!-- TomTom Maps CSS -->
+    <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps.css">
+
+</head>
+
+<!-- Header -->
+<div th:replace="header :: header"></div>
+
+<!-- inner banner -->
+<section class="inner-banner py-5">
+    <div class="w3l-breadcrumb py-lg-5">
+        <div class="container pt-4 pb-sm-4">
+            <h4 class="inner-text-title pt-5">Contact</h4>
+            <ul class="breadcrumbs-custom-path">
+                <li><a th:href="@{/home}">Home</a></li>
+                <li class="active"><i class="fas fa-angle-right"></i>Contact</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //inner banner -->
+
+<!-- Contact Section -->
+<div class="container mt-5">
+    <div class="row">
+        <!-- Contact Form -->
+        <div class="col-lg-6">
+            <h2 class="mb-4"><i class="fas fa-envelope"></i> Get in Touch</h2>
+            <form id="contactForm">
+                <div class="mb-3">
+                    <label for="name" class="form-label"><i class="fas fa-user"></i> Your Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label"><i class="fas fa-envelope"></i> Your Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label"><i class="fas fa-comment"></i> Message</label>
+                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100"><i class="fas fa-paper-plane"></i> Send Message</button>
+            </form>
+        </div>
+
+        <!-- Contact Details & Map -->
+        <div class="col-lg-6">
+            <h2 class="mb-4"><i class="fas fa-map-marker-alt"></i> Contact Information</h2>
+            <p><strong>📍 Address:</strong> 123 Main Street, Dublin, Ireland</p>
+            <p><strong>📞 Phone:</strong> <a href="tel:+353123456789">+353 123 456 789</a></p>
+            <p><strong>✉️ Email:</strong> <a href="mailto:info@example.com">info@example.com</a></p>
+
+
+            <h3>Contact Information</h3>
+            <p><strong>Address:</strong> 123 Main Street, Dublin, Ireland</p>
+            <p><strong>Phone:</strong> +353 123 456 789</p>
+            <p><strong>Email:</strong> <a href="mailto:info@example.com">info@example.com</a></p>
+
+            <!-- Mapa do TomTom -->
+            <div id="map"></div>
+        </div>
+        </div>
+    </div>
+
+
+<!-- Footer -->
+<div th:replace="footer :: footer"></div>
+
+
+<!-- Js scripts -->
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" title="Go to top">
+    <span class="fas fa-level-up-alt" aria-hidden="true"></span>
+</button>
+<script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+<!-- //move top -->
+
+<!-- common jquery plugin -->
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<!-- //common jquery plugin -->
+
+<!-- /counter-->
+<script src="assets/js/counter.js"></script>
+<!-- //counter-->
+
+<!-- theme switch js (light and dark)-->
+<script src="assets/js/theme-change.js"></script>
+<!-- //theme switch js (light and dark)-->
+
+<!-- MENU-JS -->
+<script>
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+</script>
+<!-- //MENU-JS -->
+
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+<!-- //disable body scroll which navbar is in active -->
+
+<!-- bootstrap -->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- //bootstrap -->
+<!-- //Js scripts -->
+
+
+
+<!-- TomTom Maps JavaScript -->
+<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps-web.min.js"></script>
+<!-- Style for the map -->
+<style>
+    #map {
+        width: 100%;
+        height: 300px;
+        border-radius: 10px;
+    }
+</style>
+<!-- JavaScript to initialize the map -->
+<script>
+    // Definir a chave da API do TomTom
+    var apiKey = 'ZgngvkvAtuVtfNJxF4LnSZisrYKb7rlJ'; //  API Key
+
+    // Criar o mapa
+    var map = tt.map({
+        key: apiKey,
+        container: 'map', // ID do div
+        center: [-6.2603, 53.3498], // Coordenadas Dublin (Longitude, Latitude)
+        zoom: 12 // Nível de zoom
+    });
+
+    // Adicionar controle de zoom e rotação
+    map.addControl(new tt.NavigationControl());
+
+    // Adicionar um marcador no mapa
+    var marker = new tt.Marker()
+        .setLngLat([-6.2603, 53.3498]) // Coordenadas de Dublin
+        .addTo(map);
+</script>
+
+
+
+<!-- Script Form Contact -->
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent page reload
+
+        const formData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value
+        };
+
+        fetch("http://localhost:8080/contact/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                document.getElementById("contactForm").reset();
+            })
+            .catch(error => console.error("Error:", error));
+    });
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
