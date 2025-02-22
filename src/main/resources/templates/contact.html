@@ -37,47 +37,85 @@
 </section>
 <!-- //inner banner -->
 
-<!-- Contact Section -->
-<div class="container mt-5">
-    <div class="row">
-        <!-- Contact Form -->
-        <div class="col-lg-6">
-            <h2 class="mb-4"><i class="fas fa-envelope"></i> Get in Touch</h2>
-            <form id="contactForm">
-                <div class="mb-3">
-                    <label for="name" class="form-label"><i class="fas fa-user"></i> Your Name</label>
-                    <input type="text" class="form-control" id="name" required>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label"><i class="fas fa-envelope"></i> Your Email</label>
-                    <input type="email" class="form-control" id="email" required>
-                </div>
-                <div class="mb-3">
-                    <label for="message" class="form-label"><i class="fas fa-comment"></i> Message</label>
-                    <textarea class="form-control" id="message" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary w-100"><i class="fas fa-paper-plane"></i> Send Message</button>
-            </form>
+<!-- contact block -->
+<section class="w3l-contact py-5" id="contact">
+    <div class="container py-md-5 py-4">
+        <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
+            <p class="text-uppercase">Get In Touch</p>
+            <h3 class="title-style">Contact Us</h3>
         </div>
-
-        <!-- Contact Details & Map -->
-        <div class="col-lg-6">
-            <h2 class="mb-4"><i class="fas fa-map-marker-alt"></i> Contact Information</h2>
-            <p><strong>📍 Address:</strong> 123 Main Street, Dublin, Ireland</p>
-            <p><strong>📞 Phone:</strong> <a href="tel:+353123456789">+353 123 456 789</a></p>
-            <p><strong>✉️ Email:</strong> <a href="mailto:info@example.com">info@example.com</a></p>
-
-
-            <h3>Contact Information</h3>
-            <p><strong>Address:</strong> 123 Main Street, Dublin, Ireland</p>
-            <p><strong>Phone:</strong> +353 123 456 789</p>
-            <p><strong>Email:</strong> <a href="mailto:info@example.com">info@example.com</a></p>
-
-            <!-- Mapa do TomTom -->
-            <div id="map"></div>
-        </div>
+        <div class="row contact-block">
+            <div class="col-md-7 contact-right">
+                <ul>
+                    <li class="alert alert-danger" role="alert"
+                        th:each="error : ${#fields.errors('contact.*')}" th:text="${error}" />
+                </ul>
+                <form th:action="@{/saveMessage}" method="post" class="signin-form" th:object="${contact}">
+                    <div class="input-grids">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{name}" placeholder="Your Name"
+                                       class="contact-input" />
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{phone}" placeholder="Your Mobile Number"
+                                       class="contact-input" />
+                            </div>
+                        </div>
+                        <input type="text" th:field="*{email}" placeholder="Your Email" >
+                    </div>
+                    <div class="form-input">
+                        <textarea th:field="*{message}" placeholder="Type your message here" ></textarea>
+                    </div>
+                    <div class="text-start">
+                        <button class="btn btn-primary w-100"><i class="fas fa-paper-plane"></i>Send Message</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-5 ps-lg-5 mt-md-0 mt-5">
+                <div class="contact-left">
+                    <div class="cont-details">
+                        <div class="d-flex contact-grid">
+                            <div class="cont-left text-center me-3">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="cont-right">
+                                <h6>School Address</h6>
+                                <p>Address:</strong> 123 Main Street, Dublin, Ireland</p>
+                            </div>
+                        </div>
+                        <div class="d-flex contact-grid mt-4 pt-lg-2">
+                            <div class="cont-left text-center me-3">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="cont-right">
+                                <h6>Call Us</h6>
+                                <p><a href=href="tel:+353123456789">+353 123 456 789</a></p>
+                            </div>
+                        </div>
+                        <div class="d-flex contact-grid mt-4 pt-lg-2">
+                            <div class="cont-left text-center me-3">
+                                <i class="fas fa-envelope-open-text"></i>
+                            </div>
+                            <div class="cont-right">
+                                <h6>Email Us</h6>
+                                <p><a href="mailto:info@example.com">info@example.com</a></p>
+                            </div>
+                        </div>
+                        <div class="d-flex contact-grid mt-4 pt-lg-2">
+                            <div class="cont-left text-center me-3">
+                                <i class="fas fa-headphones-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</section>
+            <!-- Mapa do TomTom -->
+            <div id="map"></div>
+
 
 
 <!-- Footer -->
@@ -181,7 +219,7 @@
 </style>
 <!-- JavaScript to initialize the map -->
 <script>
-    // Definir a chave da API do TomTom
+    //
     var apiKey = 'ZgngvkvAtuVtfNJxF4LnSZisrYKb7rlJ'; //  API Key
 
     // Criar o mapa
@@ -204,7 +242,7 @@
 
 
 <!-- Script Form Contact -->
-<script>
+<!--<script>
     document.getElementById("contactForm").addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent page reload
 
@@ -226,7 +264,7 @@
             })
             .catch(error => console.error("Error:", error));
     });
-</script>
+</script>  -->
 
 <!-- Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

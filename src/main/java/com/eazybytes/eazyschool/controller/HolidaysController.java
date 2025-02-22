@@ -2,10 +2,10 @@ package com.eazybytes.eazyschool.controller;
 
 
 import com.eazybytes.eazyschool.model.Holiday;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
@@ -13,15 +13,29 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-@Slf4j
+
 @Controller
 public class HolidaysController {
 
-    @GetMapping("/holidays")
-    public String displayHolidays(@RequestParam(required = false) boolean festival,
-                                  @RequestParam(required = false) boolean federal, Model model) {
-        model.addAttribute("festival",festival);
-        model.addAttribute("national",federal);
+    @GetMapping("/holidays/{display}")
+    public String displayHolidays(@PathVariable String display, Model model) {
+
+        if(null != display && display.equals("all")) {
+            model.addAttribute("festival", true);
+            model.addAttribute("national", true);
+        } else if (null != display && display.equals("festival")) {
+            model.addAttribute("festival", true);
+        } else if (null != display && display.equals("national")) {
+            model.addAttribute("national", true);
+        }
+
+
+        //(@RequestParam(required = false) boolean festival,
+                              //    @RequestParam(required = false) boolean federal, Model model) {
+      //  model.addAttribute("festival",festival);
+       // model.addAttribute("national",federal);
+
+
 
         List<Holiday> holidays = Arrays.asList(
                 // Public/National Holidays in Ireland
@@ -48,3 +62,5 @@ public class HolidaysController {
     }
 
 }
+
+

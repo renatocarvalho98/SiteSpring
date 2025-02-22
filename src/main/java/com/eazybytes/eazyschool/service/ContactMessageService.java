@@ -8,10 +8,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class ContactMessageService {
 
-    @Autowired
-    private ContactMessageRepository contactMessageRepository;
+    private final ContactMessageRepository contactMessageRepository;
 
-    public ContactMessage saveMessage(ContactMessage message) {
-        return contactMessageRepository.save(message);
+    @Autowired
+    private ContactMessageService(ContactMessageRepository contactMessageRepository) {
+        this.contactMessageRepository = contactMessageRepository;
+    }
+
+    public void saveMessage(ContactMessage message) {
+        System.out.println("Saving Message: " + message);
+        contactMessageRepository.save(message);
+        System.out.println("Message saved successfully in DB!");;
     }
 }
